@@ -10,7 +10,10 @@ for f in sorted(glob.glob('icons/*.svg')):
     inner=re.sub(r'^<svg[^>]*>|</svg>\s*$','',s.strip())
     sym.append(f'<symbol id="{n}" viewBox="{vb}">{inner}</symbol>')
 sprite='<svg width="0" height="0" style="position:absolute" aria-hidden="true">'+''.join(sym)+'</svg>'
+import json
+lq=json.load(open('lqip.json'))
 out=src.replace('<!--SPRITE-->',sprite)
+out=re.sub(r'<!--LQ:([a-z0-9-]+)-->',lambda m:'style="background-image:url('+lq[m.group(1)]+')"',out)
 open('index.html','w',encoding='utf-8').write(out)
 bad=[c for c in ('—','–') if c in out]
 print('icons',len(sym),'used',sorted(used-{n for n in used if os.path.exists(f"icons/{n}.svg")}),'dashes',bad,'bytes',len(out))
