@@ -14,6 +14,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" imagesrcset="img/hero-640.webp 640w, img/hero-960.webp 960w, img/hero-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -88,7 +89,7 @@ section{padding:68px 0}
 /* menu */
 .menu{background:var(--tint)}
 .mb{position:relative;margin-top:28px;border-radius:var(--r);overflow:hidden;aspect-ratio:16/8;background:var(--ink)}
-.mb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.mb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .tabs{display:flex;gap:8px;margin-top:16px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
 .tabs::-webkit-scrollbar{display:none}
 .tab{min-height:48px;padding:0 20px;border-radius:var(--r);border:1px solid var(--line2);background:transparent;font-weight:600;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
@@ -101,7 +102,8 @@ section{padding:68px 0}
 .dish .d{color:var(--muted);font-size:14.5px;line-height:1.35;margin-top:3px}
 .add{width:48px;height:48px;flex:none;border-radius:var(--r);border:1px solid var(--line2);background:var(--card);display:grid;place-items:center;cursor:pointer;transition:background .2s,transform .15s}
 .add:active{transform:scale(.94)}
-.add[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.add[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.add:hover{border-color:var(--ink)}
 .add .i{width:22px;height:22px}
 .add .ck{display:none}.add[aria-pressed=true] .pl{display:none}.add[aria-pressed=true] .ck{display:block}
 .menu-note{margin-top:22px;color:var(--muted);font-size:15px}
@@ -212,7 +214,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 
 <main id="top">
 <section class="hero">
-  <img src="img/hero.jpg" alt="Накрытый стол: закуски, горячее и два бокала вина" fetchpriority="high" width="1400" height="1868">
+  <img src="img/hero-960.webp" srcset="img/hero-640.webp 640w, img/hero-960.webp 960w, img/hero-1400.webp 1400w" sizes="100vw" alt="Накрытый стол: закуски, горячее и два бокала вина" fetchpriority="high" decoding="async" width="1400" height="1868">
   <div class="wrap">
     <h1>Банкет под ключ от шеф-повара</h1>
     <p>Свои продукты, готовка на вашей площадке, доставка. От 15 гостей, Алматы и область.</p>
@@ -258,7 +260,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
   <div class="wrap">
     <h2 class="rv">Меню</h2>
     <p class="lead rv">Нажмите на плюс у блюд, которые хотите видеть на столе. Они попадут в заявку, окончательный набор вы согласуете с поваром.</p>
-    <div class="mb"><img id="mbImg" src="img/b-salad.jpg" alt="" width="1000" height="1498"></div>
+    <div class="mb"><img src="img/banner-1200.webp" srcset="img/banner-640.webp 640w, img/banner-1200.webp 1200w" sizes="(min-width:860px) 1056px, 100vw" alt="Закуски в стеклянных креманках на фуршетном столе" width="1200" height="600" loading="lazy" decoding="async"></div>
     <div class="tabs" role="tablist" id="tabs" aria-label="Разделы меню"></div>
     <ul class="dishes" id="dishes"></ul>
     <p class="menu-note">Нужного блюда нет в списке? Напишите в комментарии к заявке, повар приготовит по вашему запросу.</p>
@@ -270,11 +272,11 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     <h2 class="rv">Так может выглядеть ваш стол</h2>
     <p class="lead rv">Фуршетные линии, канапе и банкетные столы. Оформление и подачу повар подбирает под ваш повод и площадку.</p>
     <div class="shots rv">
-      <figure><img src="img/table.jpg" alt="Фуршетный стол с нарезками, закусками и десертами" loading="lazy" width="1200" height="800"></figure>
-      <figure><img src="img/g-hall.jpg" alt="Два фуршетных стола с подносами канапе в зале" loading="lazy" width="1100" height="825"></figure>
-      <figure><img src="img/g-canape.jpg" alt="Блюда с канапе и тарталетками на банкетном столе" loading="lazy" width="1000" height="750"></figure>
-      <figure><img src="img/g-fetamelon.jpg" alt="Канапе с арбузом, фетой и креветками на деревянной доске" loading="lazy" width="900" height="1200"></figure>
-      <figure><img src="img/g-stand.jpg" alt="Стенд с закусками в стаканчиках и канапе на фуршете" loading="lazy" width="1000" height="750"></figure>
+      <figure><img src="img/table-1200.webp" srcset="img/table-480.webp 480w, img/table-800.webp 800w, img/table-1200.webp 1200w" sizes="(min-width:860px) 560px, 100vw" alt="Фуршетный стол с нарезками, закусками и десертами" loading="lazy" decoding="async" width="1200" height="800"></figure>
+      <figure><img src="img/g-hall-800.webp" srcset="img/g-hall-400.webp 400w, img/g-hall-800.webp 800w" sizes="(min-width:860px) 280px, 50vw" alt="Два фуршетных стола с подносами канапе в зале" loading="lazy" decoding="async" width="800" height="600"></figure>
+      <figure><img src="img/g-canape-800.webp" srcset="img/g-canape-400.webp 400w, img/g-canape-800.webp 800w" sizes="(min-width:860px) 280px, 50vw" alt="Блюда с канапе и тарталетками на банкетном столе" loading="lazy" decoding="async" width="800" height="600"></figure>
+      <figure><img src="img/g-fetamelon-800.webp" srcset="img/g-fetamelon-400.webp 400w, img/g-fetamelon-800.webp 800w" sizes="(min-width:860px) 280px, 50vw" alt="Канапе с арбузом, фетой и креветками на деревянной доске" loading="lazy" decoding="async" width="800" height="1066"></figure>
+      <figure><img src="img/g-stand-800.webp" srcset="img/g-stand-400.webp 400w, img/g-stand-800.webp 800w" sizes="(min-width:860px) 280px, 50vw" alt="Стенд с закусками в стаканчиках и канапе на фуршете" loading="lazy" decoding="async" width="800" height="600"></figure>
     </div>
     <p class="shots-note rv">Фото для примера.</p>
   </div>
@@ -444,7 +446,6 @@ const MENU = [
     ["Утка с пряными травами в апельсиновом соусе", ""]
   ]}
 ];
-const BANNER = { salad: "img/b-salad.jpg", snack: "img/b-snack.jpg", hot: "img/b-hot.jpg" };
 const FORMATS = ["Банкет", "Фуршет", "Свадьба", "Корпоратив", "День рождения", "Другое"];
 const MIN_GUESTS = 15;
 
@@ -462,12 +463,10 @@ function renderTabs() {
 }
 function renderDishes() {
   const c = MENU.find(x => x.id === tab);
-  const mb = $("#mbImg"), src = BANNER[tab];
-  if (!mb.src.endsWith(src)) { mb.style.opacity = 0; setTimeout(() => { mb.src = src; mb.style.opacity = 1; }, 180); }
   $("#dishes").innerHTML = c.items.map(([n, d]) => `
     <li class="dish">
       <div class="t"><div class="n">${n}</div>${d ? `<div class="d">${d}</div>` : ""}</div>
-      <button class="add" type="button" data-n="${n.replace(/"/g, "&quot;")}" aria-pressed="${picked.has(n)}" aria-label="Добавить в заявку: ${n.replace(/"/g, "&quot;")}">${ICON("plus").replace('class="i"', 'class="i pl"')}${ICON("check").replace('class="i"', 'class="i ck"')}</button>
+      <button class="add" type="button" data-n="${n.replace(/"/g, "&quot;")}" aria-pressed="${picked.has(n)}" aria-label="${picked.has(n) ? "Убрать из заявки" : "Добавить в заявку"}: ${n.replace(/"/g, "&quot;")}">${ICON("plus").replace('class="i"', 'class="i pl"')}${ICON("check").replace('class="i"', 'class="i ck"')}</button>
     </li>`).join("");
 }
 $("#tabs").addEventListener("click", e => {
@@ -480,6 +479,7 @@ $("#dishes").addEventListener("click", e => {
   const n = b.dataset.n;
   picked.has(n) ? picked.delete(n) : picked.add(n);
   b.setAttribute("aria-pressed", picked.has(n));
+  b.setAttribute("aria-label", (picked.has(n) ? "Убрать из заявки: " : "Добавить в заявку: ") + n);
   renderTabs(); refresh();
 });
 

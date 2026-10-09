@@ -1,6 +1,6 @@
 import re,glob,os
 src=open('index.src.html',encoding='utf-8').read()
-used=set(re.findall(r'href="#([a-z-]+)"',src))
+used=set(re.findall(r'href="#([a-z-]+)"',src))|{'plus','minus','check'}
 sym=[]
 for f in sorted(glob.glob('icons/*.svg')):
     n=os.path.basename(f)[:-4]
