@@ -1,4 +1,12 @@
-import re,glob,os
+import re,glob,os,json,sys
+# ---------------------------------------------------------------
+# РЕЖИМ САЙТА. DEMO=True: макет, заявки уходят автору макета (Юлии).
+# Когда Дмитрий оплатит: DEMO=False, убрать плашку .demo (см. заметки), python3 build.py, git push.
+DEMO = True
+PHONE_OWNER = "77052070537"   # повар (Дмитрий)
+PHONE_AUTHOR = "77017591615"  # автор макета (Юлия)
+# ---------------------------------------------------------------
+phone = PHONE_AUTHOR if DEMO else PHONE_OWNER
 src=open('index.src.html',encoding='utf-8').read()
 used=set(re.findall(r'href="#([a-z-]+)"',src))|{'plus','minus','check'}
 sym=[]
@@ -10,10 +18,18 @@ for f in sorted(glob.glob('icons/*.svg')):
     inner=re.sub(r'^<svg[^>]*>|</svg>\s*$','',s.strip())
     sym.append(f'<symbol id="{n}" viewBox="{vb}">{inner}</symbol>')
 sprite='<svg width="0" height="0" style="position:absolute" aria-hidden="true">'+''.join(sym)+'</svg>'
-import json
 lq=json.load(open('lqip.json'))
 out=src.replace('<!--SPRITE-->',sprite)
 out=re.sub(r'<!--LQ:([a-z0-9-]+)-->',lambda m:'style="background-image:url('+lq[m.group(1)]+')"',out)
+out=out.replace('__PHONE__',phone)
+out=out.replace('__SRC__','макета сайта' if DEMO else 'сайта')
+if DEMO:
+    out=out.replace('<!--ROBOTS-->','<meta name="robots" content="noindex, nofollow">')
+    out=out.replace('<!--DEMONOTE-->','<p class="fine demo-note">Это макет сайта. Заявка из макета придёт его автору, а не повару. После запуска сайта заявки будут приходить повару.</p>')
+    # телефон повара виден, но не кликабелен: звонок не уходит с макета
+    out=re.sub(r'<a href="tel:\+7[0-9]+">(.*?)</a>',r'<span class="telx">\1</span>',out)
+else:
+    out=out.replace('<!--ROBOTS-->','').replace('<!--DEMONOTE-->','')
 open('index.html','w',encoding='utf-8').write(out)
-bad=[c for c in ('—','–') if c in out]
-print('icons',len(sym),'used',sorted(used-{n for n in used if os.path.exists(f"icons/{n}.svg")}),'dashes',bad,'bytes',len(out))
+bad=[c for c in ('\u2014','\u2013') if c in out]
+print('mode','DEMO' if DEMO else 'LIVE','phone',phone,'icons',len(sym),'dashes',bad,'bytes',len(out),'owner-number-left',out.count(PHONE_OWNER) if DEMO else '-')

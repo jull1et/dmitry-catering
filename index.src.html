@@ -14,6 +14,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23d63a25%27/%3E%3C/svg%3E">
+<!--ROBOTS-->
 <link rel="preload" as="image" media="(max-width:859px)" imagesrcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1000.webp 1000w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" media="(min-width:860px)" href="img/hero-1400.webp" fetchpriority="high">
 <link rel="preload" href="fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -33,7 +35,8 @@
   color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.5 "Onest",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
 img{display:block;max-width:100%}
 button,input,textarea{font:inherit;color:inherit}
@@ -97,7 +100,7 @@ section{padding:68px 0}
 .tabs{display:flex;gap:8px;margin-top:16px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
 .tabs::-webkit-scrollbar{display:none}
 .tab{min-height:48px;padding:0 20px;border-radius:var(--r);border:1px solid var(--line2);background:transparent;font-weight:600;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
-.tab[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tab[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .tab small{font-weight:500;opacity:.75}
 .dishes{list-style:none;margin-top:10px;display:grid;grid-template-columns:1fr;column-gap:36px}
 .dish{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
@@ -165,6 +168,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 .cont{display:grid;gap:6px}
 .cont a{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none;min-height:46px;font-weight:500}
 .cont .i{color:var(--acc)}
+.telx{display:flex;align-items:center;gap:12px;min-height:46px;font-weight:500}
 
 /* sticky bar */
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:rgba(251,249,248,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:center;transform:translateY(110%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
@@ -218,7 +222,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
   <header class="top">
   <div class="wrap">
     <a class="logo" href="#top">Catering Chefs Table<small>выездной шеф-повар</small></a>
-    <a class="wa-ico" href="https://wa.me/77052070537" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg></a>
+    <a class="wa-ico" href="https://wa.me/__PHONE__" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg></a>
   </div>
 </header>
   <picture><source media="(min-width:860px)" srcset="img/hero-1400.webp"><img src="img/hero-750.webp" srcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1000.webp 1000w" sizes="100vw" alt="Накрытый стол: закуски, горячее и два бокала вина" fetchpriority="high" decoding="async" width="1000" height="1334"></picture>
@@ -268,7 +272,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     <h2 class="rv">Меню</h2>
     <p class="lead rv">Нажмите на плюс у блюд, которые хотите видеть на столе. Они попадут в заявку, окончательный набор вы согласуете с поваром.</p>
     <div class="mb" <!--LQ:banner-->><img src="img/banner-960.webp" srcset="img/banner-480.webp 480w, img/banner-960.webp 960w" sizes="(min-width:860px) 1056px, 100vw" alt="Закуски в стеклянных креманках на фуршетном столе" width="960" height="480" loading="lazy" decoding="async"></div>
-    <div class="tabs" role="tablist" id="tabs" aria-label="Разделы меню"></div>
+    <div class="tabs" role="group" id="tabs" aria-label="Разделы меню"></div>
     <ul class="dishes" id="dishes"></ul>
     <p class="menu-note">Нужного блюда нет в списке? Напишите в комментарии к заявке, повар приготовит по вашему запросу.</p>
   </div>
@@ -354,9 +358,10 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
         <label for="fNote">Комментарий</label>
         <textarea id="fNote" placeholder="Повод, пожелания, аллергии, что важно учесть"></textarea>
       </div>
-      <a class="btn btn-acc send" id="send" href="https://wa.me/77052070537" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Отправить в WhatsApp</a>
+      <a class="btn btn-acc send" id="send" href="https://wa.me/__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Отправить в WhatsApp</a>
       <button class="copy" id="copy" type="button">Скопировать текст заявки</button>
       <p class="fine">Заявка откроется в WhatsApp уже написанной. Вам останется нажать «отправить».</p>
+      <!--DEMONOTE-->
     </form>
   </div>
 </section>
@@ -370,7 +375,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     </div>
     <div class="cont">
       <a href="tel:+77052070537"><svg class="i"><use href="#phone"/></svg>+7 705 207 05 37</a>
-      <a href="https://wa.me/77052070537" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Написать в WhatsApp</a>
+      <a href="https://wa.me/__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Написать в WhatsApp</a>
       <a href="https://www.instagram.com/povar_v_almaty_dmitry.shef/" target="_blank" rel="noopener"><svg class="i"><use href="#instagram-logo"/></svg>@povar_v_almaty_dmitry.shef</a>
       <a href="#top" style="pointer-events:none"><svg class="i"><use href="#map-pin"/></svg>Алматы и область</a>
     </div>
@@ -384,7 +389,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-const PHONE = "77052070537";
+const PHONE = "__PHONE__";  // куда уходят заявки (подставляет build.py)
 const MENU = [
   { id: "salad", title: "Салаты", items: [
     ["Афины", "сыр фета, перец светофор, маслины, лист салата, черри, огурцы"],
@@ -465,7 +470,7 @@ let tab = MENU[0].id, format = "", guests = MIN_GUESTS;
 function renderTabs() {
   $("#tabs").innerHTML = MENU.map(c => {
     const n = c.items.filter(i => picked.has(i[0])).length;
-    return `<button class="tab" role="tab" type="button" data-t="${c.id}" aria-selected="${c.id === tab}">${c.title}<small>${n ? n + " из " : ""}${c.items.length}</small></button>`;
+    return `<button class="tab" type="button" data-t="${c.id}" aria-pressed="${c.id === tab}">${c.title}<small>${n ? n + " из " : ""}${c.items.length}</small></button>`;
   }).join("");
 }
 function renderDishes() {
@@ -479,7 +484,7 @@ function renderDishes() {
 $("#tabs").addEventListener("click", e => {
   const b = e.target.closest(".tab"); if (!b) return;
   tab = b.dataset.t; renderTabs(); renderDishes();
-  $("#tabs").querySelector('[aria-selected=true]').scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+  $("#tabs").querySelector('[aria-pressed=true]').scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
 });
 $("#dishes").addEventListener("click", e => {
   const b = e.target.closest(".add"); if (!b) return;
@@ -509,7 +514,7 @@ function setGuests(v) {
 $("#gMinus").onclick = () => setGuests(guests - 1);
 $("#gPlus").onclick = () => setGuests(guests + 1);
 gIn.addEventListener("change", () => setGuests(gIn.value));
-$("#fDate").min = new Date().toISOString().slice(0, 10);
+{ const t = new Date(); $("#fDate").min = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`; }
 ["fName", "fDate", "fTime", "fPlace", "fNote", "fWait", "fWash"].forEach(id => $("#" + id).addEventListener("input", refresh));
 
 const fmtDate = v => { if (!v) return ""; const [y, m, d] = v.split("-"); return `${d}.${m}.${y}`; };
@@ -517,7 +522,7 @@ function orderText() {
   const name = $("#fName").value.trim(), date = fmtDate($("#fDate").value), time = $("#fTime").value;
   const place = $("#fPlace").value.trim(), note = $("#fNote").value.trim();
   const dishes = [...picked];
-  const L = ["*Заявка с сайта Catering Chefs Table*", ""];
+  const L = ["*Заявка с __SRC__ Catering Chefs Table*", ""];
   L.push(`Имя: ${name || "не указано"}`);
   L.push(`Дата: ${date || "не указана"}${time ? `, начало в ${time}` : ""}`);
   L.push(`Гостей: ${guests}`);
