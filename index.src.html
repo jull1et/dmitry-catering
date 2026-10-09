@@ -53,13 +53,16 @@ section{padding:68px 0}
 .btn-ghost{border-color:rgba(255,255,255,.55);background:rgba(36,29,30,.28);color:#fff;backdrop-filter:blur(8px)}
 .btn-ghost:hover{border-color:#fff}
 
+.demo{background:var(--ink);color:#fff;text-align:center;font-size:13.5px;line-height:40px;height:40px;white-space:nowrap;overflow:hidden;padding:0 12px}
+.demo a{text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-underline-offset:3px}
+.demo a:hover{text-decoration-color:#fff}
 /* header + hero (text over photo is always white, scrim guarantees contrast) */
 .top{position:absolute;inset:0 0 auto 0;z-index:5;padding:max(14px,env(safe-area-inset-top)) 0 0;color:#fff}
 .top .wrap{display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;font-size:15px;text-decoration:none;line-height:1.15}
 .logo small{display:block;font-family:"Onest",sans-serif;font-weight:500;font-size:13px;opacity:.85;letter-spacing:0;margin-top:3px}
 .wa-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:var(--r);border:1px solid rgba(255,255,255,.5);background:rgba(36,29,30,.3);backdrop-filter:blur(8px);color:#fff}
-.hero{background-size:cover;background-position:50% 32%;position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:96px 0 44px;isolation:isolate;color:#fff}
+.hero{background-size:cover;background-position:50% 32%;position:relative;min-height:calc(100svh - 40px);display:flex;align-items:flex-end;padding:96px 0 44px;isolation:isolate;color:#fff}
 .hero picture{position:absolute;inset:0;z-index:-2;overflow:hidden}
 .hero picture img{width:100%;height:100%;object-fit:cover;object-position:50% 32%}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(36,20,18,.55) 0%,rgba(36,20,18,.05) 26%,rgba(36,20,18,.55) 58%,rgba(24,14,13,.92) 100%)}
@@ -207,15 +210,17 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 <body>
 <!--SPRITE-->
 
-<header class="top">
+
+<div class="demo"><a href="https://wa.me/77017591615?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%AE%D0%BB%D0%B8%D1%8F!%20%D0%92%D0%B8%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BC%D0%B0%D0%BA%D0%B5%D1%82%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%B2%D0%B0%D1%80%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%BE%D0%B9%20%D0%B6%D0%B5" target="_blank" rel="noopener">Макет сайта для повара. Сделала Юлия</a></div>
+
+<main id="top">
+<section class="hero" <!--LQ:hero-->>
+  <header class="top">
   <div class="wrap">
     <a class="logo" href="#top">Catering Chefs Table<small>выездной шеф-повар</small></a>
     <a class="wa-ico" href="https://wa.me/77052070537" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg></a>
   </div>
 </header>
-
-<main id="top">
-<section class="hero" <!--LQ:hero-->>
   <picture><source media="(min-width:860px)" srcset="img/hero-1400.webp"><img src="img/hero-750.webp" srcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1000.webp 1000w" sizes="100vw" alt="Накрытый стол: закуски, горячее и два бокала вина" fetchpriority="high" decoding="async" width="1000" height="1334"></picture>
   <div class="wrap">
     <h1>Банкет под ключ от <span style="white-space:nowrap">шеф-повара</span></h1>
