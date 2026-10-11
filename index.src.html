@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23d63a25%27/%3E%3C/svg%3E">
 <!--ROBOTS-->
+<link rel="preconnect" href="https://api.whatsapp.com">
 <link rel="preload" as="image" media="(max-width:859px)" imagesrcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1125.webp 1125w, img/hero-1500.webp 1500w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" media="(min-width:860px)" imagesrcset="img/hero-wide-1280.webp 1280w, img/hero-wide-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="__CDN__fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -245,7 +246,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
   <header class="top">
   <div class="wrap">
     <a class="logo" href="#top">Catering Chefs Table<small>шеф-повар Дмитрий Димов</small></a>
-    <a class="wa-ico" href="https://wa.me/__PHONE__" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg></a>
+    <a class="wa-ico" href="https://api.whatsapp.com/send?phone=__PHONE__" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg></a>
   </div>
 </header>
   <picture><source media="(min-width:860px)" srcset="img/hero-wide-1280.webp 1280w, img/hero-wide-1920.webp 1920w" sizes="100vw"><img src="img/hero-750.webp" srcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1125.webp 1125w, img/hero-1500.webp 1500w" sizes="100vw" alt="Обжаренные креветки с укропом и лаймом от шеф-повара Дмитрия Димова" fetchpriority="high" decoding="async" width="1125" height="1500"></picture>
@@ -419,7 +420,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
         <label for="fNote">Комментарий</label>
         <textarea id="fNote" placeholder="Повод, пожелания, аллергии, что важно учесть"></textarea>
       </div>
-      <a class="btn btn-acc send" id="send" href="https://wa.me/__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Отправить в WhatsApp</a>
+      <a class="btn btn-acc send" id="send" href="https://api.whatsapp.com/send?phone=__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Отправить в WhatsApp</a>
       <button class="copy" id="copy" type="button">Скопировать текст заявки</button>
       <p class="fine">Заявка откроется в WhatsApp уже написанной. Вам останется нажать «отправить».</p>
       <!--DEMONOTE-->
@@ -436,7 +437,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     </div>
     <div class="cont">
       <a href="tel:+77052070537"><svg class="i"><use href="#phone"/></svg>+7 705 207 05 37</a>
-      <a href="https://wa.me/__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Написать в WhatsApp</a>
+      <a href="https://api.whatsapp.com/send?phone=__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Написать в WhatsApp</a>
       <a href="https://www.instagram.com/povar_v_almaty_dmitry.shef/" target="_blank" rel="noopener"><svg class="i"><use href="#instagram-logo"/></svg>@povar_v_almaty_dmitry.shef</a>
       <a href="#top" style="pointer-events:none"><svg class="i"><use href="#map-pin"/></svg>Алматы и область</a>
     </div>
@@ -601,7 +602,7 @@ function orderText() {
   return L.join("\n");
 }
 function refresh() {
-  $("#send").href = `https://wa.me/${PHONE}?text=${encodeURIComponent(orderText())}`;
+  $("#send").href = `https://api.whatsapp.com/send?phone=${PHONE}&text=${encodeURIComponent(orderText())}`;
   const n = picked.size;
   $("#picked").innerHTML = n ? pickedGroups().map(([t, arr]) => `<div><b>${t} (${arr.length}):</b> ${arr.join(", ")}</div>`).join("") : "Пока ничего не выбрано. Отметьте блюда в меню выше или обсудите меню с поваром.";
   $("#cnt").hidden = !n; $("#cntN").textContent = n;
