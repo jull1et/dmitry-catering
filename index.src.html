@@ -16,8 +16,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23d63a25%27/%3E%3C/svg%3E">
 <!--ROBOTS-->
-<link rel="preload" as="image" media="(max-width:859px)" imagesrcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1000.webp 1000w" imagesizes="100vw" fetchpriority="high">
-<link rel="preload" as="image" media="(min-width:860px)" href="img/hero-1400.webp" fetchpriority="high">
+<link rel="preload" as="image" media="(max-width:859px)" imagesrcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-960.webp 960w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width:860px)" href="img/hero-wide-1280.webp" fetchpriority="high">
 <link rel="preload" href="__CDN__fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="__CDN__fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -56,17 +56,15 @@ section{padding:68px 0}
 .btn-ghost{border-color:rgba(255,255,255,.55);background:rgba(36,29,30,.28);color:#fff;backdrop-filter:blur(8px)}
 .btn-ghost:hover{border-color:#fff}
 
-.demo{background:var(--ink);color:#fff;text-align:center;font-size:13.5px;line-height:40px;height:40px;white-space:nowrap;overflow:hidden;padding:0 12px}
-.demo .d-l{display:none}
 /* header + hero (text over photo is always white, scrim guarantees contrast) */
 .top{position:absolute;inset:0 0 auto 0;z-index:5;padding:max(14px,env(safe-area-inset-top)) 0 0;color:#fff}
 .top .wrap{display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;font-size:15px;text-decoration:none;line-height:1.15}
 .logo small{display:block;font-family:"Onest",sans-serif;font-weight:500;font-size:13px;opacity:.85;letter-spacing:0;margin-top:3px}
 .wa-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:var(--r);border:1px solid rgba(255,255,255,.5);background:rgba(36,29,30,.3);backdrop-filter:blur(8px);color:#fff}
-.hero{background-size:cover;background-position:50% 32%;position:relative;min-height:var(--hh,calc(100svh - 40px));display:flex;align-items:flex-end;padding:96px 0 44px;isolation:isolate;color:#fff}
+.hero{background-size:cover;background-position:50% 50%;position:relative;min-height:var(--hh,100svh);display:flex;align-items:flex-end;padding:96px 0 44px;isolation:isolate;color:#fff}
 .hero picture{position:absolute;inset:0;z-index:-2;overflow:hidden}
-.hero picture img{width:100%;height:100%;object-fit:cover;object-position:50% 32%}
+.hero picture img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(36,20,18,.55) 0%,rgba(36,20,18,.05) 26%,rgba(36,20,18,.55) 58%,rgba(24,14,13,.92) 100%)}
 .hero h1{font-size:clamp(30px,8.4vw,68px);max-width:15ch;line-height:1.06}
 .hero p{margin-top:18px;max-width:34ch;font-size:18px;color:rgba(255,255,255,.92)}
@@ -121,7 +119,25 @@ section{padding:68px 0}
 .shots figure:first-child{grid-column:1/-1;aspect-ratio:16/10}
 .shots img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
 .shots figure:hover img{transform:scale(1.05)}
-.shots-note{margin-top:14px;color:var(--muted);font-size:14.5px}
+
+/* about the chef */
+.about{background:var(--tint)}
+.about-grid{display:grid;gap:26px}
+.about figure{border-radius:var(--r);overflow:hidden;background:var(--card) center/cover;aspect-ratio:8/9}
+.about figure img{width:100%;height:100%;object-fit:cover}
+.about p{color:var(--muted);margin-top:14px;max-width:56ch}
+.about .ig{display:inline-flex;align-items:center;gap:12px;margin-top:20px;min-height:48px;font-weight:600;text-underline-offset:4px}
+.about .ig .i{color:var(--acc)}
+
+/* faq */
+.faq{padding-top:0}
+.qa{margin-top:26px;border-top:1px solid var(--line);max-width:780px}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px;padding:14px 0;font-weight:600;line-height:1.3}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .i{color:var(--acc);width:22px;height:22px;transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.qa details[open] summary .i{transform:rotate(45deg)}
+.qa p{color:var(--muted);font-size:16px;padding:0 0 20px;max-width:62ch}
 
 /* process */
 .steps{list-style:none;margin-top:34px;display:grid;gap:0;position:relative}
@@ -164,6 +180,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 .chk span{color:var(--muted);font-size:14.5px}
 .picked{background:var(--tint);border-radius:var(--r);padding:14px;font-size:15px;color:var(--muted)}
 .picked b{color:var(--ink)}
+.picked div+div{margin-top:8px}
 .send{width:100%;margin-top:6px}
 .fine{color:var(--muted);font-size:14px;margin-top:14px}
 .copy{width:100%;margin-top:10px;background:#fff;border:1px solid var(--line2);color:var(--ink);min-height:48px;border-radius:var(--r);cursor:pointer;font-weight:500}
@@ -196,17 +213,17 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 }
 
 @media (min-width:860px){
-  .demo .d-s{display:none}.demo .d-l{display:inline}
   :root{--pad:32px}
   section{padding:104px 0}
   body{padding-bottom:0}
   .hero{padding-bottom:80px}
-  .hero picture img{object-position:50% 28%}
+  .hero picture img{object-position:50% 50%}
   .incl-grid{grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
   .mb{aspect-ratio:16/6}
   .dishes{grid-template-columns:1fr 1fr}
   .shots{grid-template-columns:repeat(4,1fr);gap:12px}
   .shots figure:first-child{grid-column:1/3;grid-row:1/3;aspect-ratio:auto}
+  .about-grid{grid-template-columns:.8fr 1fr;gap:56px;align-items:center}
   .steps{grid-template-columns:repeat(4,1fr);gap:24px}
   .steps li{grid-template-columns:1fr;padding-bottom:0}
   .steps li:not(:last-child)::before{left:64px;right:-24px;top:25px;bottom:auto;width:auto;height:2px}
@@ -223,8 +240,6 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 <!--SPRITE-->
 
 
-<div class="demo" role="note"><span class="d-s">Макет сайта. Создан Юлией Устьянцевой</span><span class="d-l">Макет сайта для повара. Создан Юлией Устьянцевой</span></div>
-
 <main id="top">
 <section class="hero" <!--LQ:hero-->>
   <header class="top">
@@ -233,7 +248,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     <a class="wa-ico" href="https://wa.me/__PHONE__" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg></a>
   </div>
 </header>
-  <picture><source media="(min-width:860px)" srcset="img/hero-1400.webp"><img src="img/hero-750.webp" srcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1000.webp 1000w" sizes="100vw" alt="Накрытый стол: закуски, горячее и два бокала вина" fetchpriority="high" decoding="async" width="1000" height="1334"></picture>
+  <picture><source media="(min-width:860px)" srcset="img/hero-wide-1280.webp"><img src="img/hero-750.webp" srcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-960.webp 960w" sizes="100vw" alt="Обжаренные креветки с укропом и лаймом от шеф-повара Дмитрия Димова" fetchpriority="high" decoding="async" width="960" height="1280"></picture>
   <div class="wrap">
     <h1>Банкет под ключ от <span style="white-space:nowrap">шеф-повара</span></h1>
     <p>Свои продукты, готовка на вашей площадке, доставка. От 15 гостей, Алматы и область.</p>
@@ -259,7 +274,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     <div class="incl-grid">
       <ul class="incl rv">
         <li><div class="ic"><svg class="i"><use href="#basket"/></svg></div><div><strong>Свои продукты</strong><span>Закупаем сами, вам ничего покупать не нужно</span></div></li>
-        <li><div class="ic"><svg class="i"><use href="#knife"/></svg></div><div><strong>Маринуем и готовим сами</strong><span>Мясо и рыбу готовим заранее, доводим до готовности у вас</span></div></li>
+        <li><div class="ic"><svg class="i"><use href="#bowl-food"/></svg></div><div><strong>Готовим у вас или в своём цеху</strong><span>Горячее готовим на вашей площадке. Если кухни нет, салаты и закуски привезём из цеха, на месте разложим и украсим</span></div></li>
         <li><div class="ic"><svg class="i"><use href="#cooking-pot"/></svg></div><div><strong>Инвентарь для приготовления</strong><span>Казаны, грили, посуда для готовки привозим с собой</span></div></li>
         <li><div class="ic"><svg class="i"><use href="#truck"/></svg></div><div><strong>Доставка</strong><span>Привозим продукты и всё оборудование на вашу площадку</span></div></li>
       </ul>
@@ -278,8 +293,8 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 <section class="menu" id="menu">
   <div class="wrap">
     <h2 class="rv">Меню</h2>
-    <p class="lead rv">Нажмите на плюс у блюд, которые хотите видеть на столе. Они попадут в заявку, окончательный набор вы согласуете с поваром.</p>
-    <div class="mb" <!--LQ:banner-->><img src="img/banner-960.webp" srcset="img/banner-480.webp 480w, img/banner-960.webp 960w" sizes="(min-width:860px) 1056px, 100vw" alt="Закуски в стеклянных креманках на фуршетном столе" width="960" height="480" loading="lazy" decoding="async"></div>
+    <p class="lead rv">Это меню-конструктор: стол вы собираете сами. Нажмите на плюс у блюд, которые хотите видеть на банкете. Они попадут в заявку, окончательный набор вы согласуете с поваром.</p>
+    <div class="mb" <!--LQ:banner-->><img src="img/banner-800.webp" srcset="img/banner-480.webp 480w, img/banner-800.webp 800w" sizes="(min-width:860px) 1056px, 100vw" alt="Банкетный стол с салатами, мясной и рыбной нарезкой" width="800" height="400" loading="lazy" decoding="async"></div>
     <div class="tabs" role="group" id="tabs" aria-label="Разделы меню"></div>
     <ul class="dishes" id="dishes"></ul>
     <p class="menu-note">Нужного блюда нет в списке? Напишите в комментарии к заявке, повар приготовит по вашему запросу.</p>
@@ -288,16 +303,39 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
 
 <section id="work">
   <div class="wrap">
-    <h2 class="rv">Так может выглядеть ваш стол</h2>
-    <p class="lead rv">Фуршетные линии, канапе и банкетные столы. Оформление и подачу повар подбирает под ваш повод и площадку.</p>
+    <h2 class="rv">Наши банкеты</h2>
+    <p class="lead rv">Столы и блюда, которые повар готовил для гостей в Алматы и области: дома, в залах и на природе.</p>
     <div class="shots rv">
-      <figure <!--LQ:table-->><img src="img/table-1200.webp" srcset="img/table-480.webp 480w, img/table-800.webp 800w, img/table-1200.webp 1200w" sizes="(min-width:860px) 560px, 100vw" alt="Фуршетный стол с нарезками, закусками и десертами" loading="lazy" decoding="async" width="1200" height="800"></figure>
-      <figure <!--LQ:g-hall-->><img src="img/g-hall-600.webp" srcset="img/g-hall-360.webp 360w, img/g-hall-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Два фуршетных стола с подносами канапе в зале" loading="lazy" decoding="async" width="600" height="450"></figure>
-      <figure <!--LQ:g-canape-->><img src="img/g-canape-600.webp" srcset="img/g-canape-360.webp 360w, img/g-canape-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Блюда с канапе и тарталетками на банкетном столе" loading="lazy" decoding="async" width="600" height="450"></figure>
-      <figure <!--LQ:g-fetamelon-->><img src="img/g-fetamelon-600.webp" srcset="img/g-fetamelon-360.webp 360w, img/g-fetamelon-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Канапе с арбузом, фетой и креветками на деревянной доске" loading="lazy" decoding="async" width="600" height="800"></figure>
-      <figure <!--LQ:g-stand-->><img src="img/g-stand-600.webp" srcset="img/g-stand-360.webp 360w, img/g-stand-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Стенд с закусками в стаканчиках и канапе на фуршете" loading="lazy" decoding="async" width="600" height="450"></figure>
+      <figure <!--LQ:table-->><img src="img/table-960.webp" srcset="img/table-480.webp 480w, img/table-960.webp 960w" sizes="(min-width:860px) 560px, 100vw" alt="Длинный банкетный стол на природе под гирляндой, накрытый к приходу гостей" loading="lazy" decoding="async" width="960" height="600"></figure>
+      <figure <!--LQ:g-long-->><img src="img/g-long-600.webp" srcset="img/g-long-360.webp 360w, img/g-long-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Банкетный стол на свежем воздухе: салаты, закуски, свечи и цветы" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-skewers-->><img src="img/g-skewers-600.webp" srcset="img/g-skewers-360.webp 360w, img/g-skewers-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Мини-шашлычки из креветок с лимоном на тарелках" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-top-->><img src="img/g-top-600.webp" srcset="img/g-top-360.webp 360w, img/g-top-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Накрытый стол сверху: перепёлки, салаты, капрезе и фрукты" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-serve-->><img src="img/g-serve-600.webp" srcset="img/g-serve-360.webp 360w, img/g-serve-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Шеф-повар Дмитрий Димов раскладывает бешбармак на блюдо" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-hall-->><img src="img/g-hall-600.webp" srcset="img/g-hall-360.webp 360w, img/g-hall-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Банкетный стол в зале: салаты, закуски, рыбная нарезка" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-roll-->><img src="img/g-roll-600.webp" srcset="img/g-roll-360.webp 360w, img/g-roll-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Мясной рулет с начинкой, нарезанный на доске" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-canape-->><img src="img/g-canape-600.webp" srcset="img/g-canape-360.webp 360w, img/g-canape-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Канапе с лососем и творожным сыром на ржаном хлебе" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-rolls-->><img src="img/g-rolls-600.webp" srcset="img/g-rolls-360.webp 360w, img/g-rolls-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Рулетики из баклажанов с творожным сыром" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-plov-->><img src="img/g-plov-600.webp" srcset="img/g-plov-360.webp 360w, img/g-plov-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Плов с мясом, нутом и барбарисом" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-steak-->><img src="img/g-steak-600.webp" srcset="img/g-steak-360.webp 360w, img/g-steak-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Стейк на гриле с базиликом и розовым перцем" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-fish-->><img src="img/g-fish-600.webp" srcset="img/g-fish-360.webp 360w, img/g-fish-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Филе рыбы на гриле с овощами" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-caprese-->><img src="img/g-caprese-600.webp" srcset="img/g-caprese-360.webp 360w, img/g-caprese-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Закуска из баклажанов с моцареллой и базиликом" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-kebab-->><img src="img/g-kebab-600.webp" srcset="img/g-kebab-360.webp 360w, img/g-kebab-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Шашлычки из курицы с кабачком, перцем и красным луком" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-capskew-->><img src="img/g-capskew-600.webp" srcset="img/g-capskew-360.webp 360w, img/g-capskew-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Канапе капрезе на шпажках с соусом песто" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-salad-->><img src="img/g-salad-600.webp" srcset="img/g-salad-360.webp 360w, img/g-salad-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Салат с курицей, цитрусами и томатами черри" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-lamb-->><img src="img/g-lamb-600.webp" srcset="img/g-lamb-360.webp 360w, img/g-lamb-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Каре ягнёнка с овощными рулетиками" loading="lazy" decoding="async" width="600" height="600"></figure>
     </div>
-    <p class="shots-note rv">Фото для примера.</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <figure class="rv" <!--LQ:chef-->><img src="img/chef-800.webp" srcset="img/chef-480.webp 480w, img/chef-800.webp 800w" sizes="(min-width:860px) 460px, 100vw" alt="Шеф-повар Дмитрий Димов на кухне с противнем свежей рыбы" loading="lazy" decoding="async" width="800" height="902"></figure>
+    <div>
+      <h2 class="rv">Готовит шеф-повар Дмитрий Димов</h2>
+      <p class="rv">Дмитрий проводит выездные банкеты в Алматы и области с 2015 года. За это время провёл больше 1000 банкетов: дни рождения, юбилеи, корпоративы, семейные праздники.</p>
+      <p class="rv">Меню под ваш повод он собирает сам, сам закупает продукты и готовит. Приезжает один или с командой поваров: домой, на дачу, на природу или в арендованный зал.</p>
+      <a class="ig rv" href="https://www.instagram.com/povar_v_almaty_dmitry.shef/" target="_blank" rel="noopener"><svg class="i"><use href="#instagram-logo"/></svg>Отзывы гостей и новые работы в Instagram</a>
+    </div>
   </div>
 </section>
 
@@ -310,6 +348,21 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
       <li class="rv"><div class="ic"><svg class="i"><use href="#fork-knife"/></svg></div><div><h3>Согласуете меню и оплату</h3><p>Меню собираем под ваш повод, оплата по договору.</p></div></li>
       <li class="rv"><div class="ic"><svg class="i"><use href="#truck"/></svg></div><div><h3>Привозим и готовим</h3><p>В день банкета продукты, готовка и подача на нашей стороне.</p></div></li>
     </ol>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2 class="rv">Если заказываете выездной банкет впервые</h2>
+    <p class="lead rv">Коротко о том, как это устроено.</p>
+    <div class="qa rv">
+      <details open><summary>Что такое выездной банкет?<svg class="i"><use href="#plus"/></svg></summary><p>Повар приезжает туда, где вы собираете гостей: домой, на дачу, в офис или в арендованный зал. Привозит продукты и посуду для готовки, готовит и раскладывает блюда на столе. Вам не нужно закупать продукты и стоять у плиты.</p></details>
+      <details><summary>Нужна ли кухня на площадке?<svg class="i"><use href="#plus"/></svg></summary><p>Не обязательно. Горячее повар обычно готовит на месте, казаны и грили привозит с собой. Если кухни нет, салаты и закуски готовим в своём цеху, привозим и на месте раскладываем и украшаем. Напишите в заявке, что есть на площадке, и повар подскажет, как лучше.</p></details>
+      <details><summary>Сколько блюд выбирать?<svg class="i"><use href="#plus"/></svg></summary><p>Обычно на банкет берут три-четыре салата, три-четыре закуски и одно-два горячих, к ним хлебную и фруктовую нарезку. Можно больше или меньше, от этого зависит цена. Отметьте в меню то, что нравится, а точный набор повар поможет собрать.</p></details>
+      <details><summary>От чего зависит цена?<svg class="i"><use href="#plus"/></svg></summary><p>От выбранных блюд, числа гостей и места, где пройдёт банкет. Чем больше гостей, тем ниже цена на человека. Повар называет одну сумму на гостя: в неё уже входят продукты, работа и выезд.</p></details>
+      <details><summary>Что оплачивается отдельно?<svg class="i"><use href="#plus"/></svg></summary><p>Официанты и мойщица посуды. Это дополнительная услуга, чтобы вам не пришлось искать их самим. Отметьте в заявке, если они нужны.</p></details>
+      <details><summary>Вы выезжаете за город?<svg class="i"><use href="#plus"/></svg></summary><p>Да, приезжаем в любую точку Алматы и области, в том числе в горы. Укажите в заявке, где пройдёт банкет.</p></details>
+    </div>
   </div>
 </section>
 
@@ -466,7 +519,7 @@ const MENU = [
     ["Утка с пряными травами в апельсиновом соусе", ""]
   ]}
 ];
-const FORMATS = ["Банкет", "Фуршет", "Свадьба", "Корпоратив", "День рождения", "Другое"];
+const FORMATS = ["Банкет", "День рождения", "Юбилей", "Свадьба", "Корпоратив", "Фуршет", "Другое"];
 const MIN_GUESTS = 15;
 
 const $ = s => document.querySelector(s);
@@ -526,11 +579,13 @@ gIn.addEventListener("change", () => setGuests(gIn.value));
 ["fName", "fDate", "fTime", "fPlace", "fNote", "fWait", "fWash"].forEach(id => $("#" + id).addEventListener("input", refresh));
 ["fDate", "fTime"].forEach(id => { const el = $("#" + id), box = el.parentElement; const sync = () => box.classList.toggle("has", !!el.value); el.addEventListener("input", sync); el.addEventListener("change", sync); sync(); });
 
+/* выбранные блюда по разделам меню: [["Салаты", [...]], ["Закуски", [...]], ...] */
+const pickedGroups = () => MENU.map(c => [c.title, c.items.map(i => i[0]).filter(n => picked.has(n))]).filter(g => g[1].length);
 const fmtDate = v => { if (!v) return ""; const [y, m, d] = v.split("-"); return `${d}.${m}.${y}`; };
 function orderText() {
   const name = $("#fName").value.trim(), date = fmtDate($("#fDate").value), time = $("#fTime").value;
   const place = $("#fPlace").value.trim(), note = $("#fNote").value.trim();
-  const dishes = [...picked];
+  const groups = pickedGroups();
   const L = ["*Заявка с __SRC__ Catering Chefs Table*", ""];
   L.push(`Имя: ${name || "не указано"}`);
   L.push(`Дата: ${date || "не указана"}${time ? `, начало в ${time}` : ""}`);
@@ -539,15 +594,16 @@ function orderText() {
   if (place) L.push(`Место: ${place}`);
   L.push(`Официанты: ${$("#fWait").checked ? "нужны" : "не нужны"}`);
   L.push(`Мойщица посуды: ${$("#fWash").checked ? "нужна" : "не нужна"}`);
-  L.push(dishes.length ? `Блюда из меню (${dishes.length}): ${dishes.join(", ")}` : "Блюда: пока не выбрано, хочу обсудить меню");
-  if (note) L.push(`Комментарий: ${note}`);
+  if (groups.length) groups.forEach(([t, arr]) => { L.push("", `*${t}:*`); arr.forEach((n, i) => L.push(`${i + 1}) ${n}`)); });
+  else L.push("Блюда: пока не выбрано, хочу обсудить меню");
+  if (note) L.push("", `Комментарий: ${note}`);
   L.push("", "Прошу рассчитать стоимость.");
   return L.join("\n");
 }
 function refresh() {
   $("#send").href = `https://wa.me/${PHONE}?text=${encodeURIComponent(orderText())}`;
   const n = picked.size;
-  $("#picked").innerHTML = n ? `<b>Выбрано ${n}:</b> ${[...picked].join(", ")}` : "Пока ничего не выбрано. Отметьте блюда в меню выше или обсудите меню с поваром.";
+  $("#picked").innerHTML = n ? pickedGroups().map(([t, arr]) => `<div><b>${t} (${arr.length}):</b> ${arr.join(", ")}</div>`).join("") : "Пока ничего не выбрано. Отметьте блюда в меню выше или обсудите меню с поваром.";
   $("#cnt").hidden = !n; $("#cntN").textContent = n;
 }
 function check() {
@@ -583,7 +639,7 @@ document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
 /* hero height is fixed once per width: mobile browser toolbars collapsing on scroll must not resize the photo */
 { const hero = document.querySelector(".hero"); let lw = innerWidth;
-  const setH = () => hero.style.setProperty("--hh", Math.max(460, innerHeight - 40) + "px");
+  const setH = () => hero.style.setProperty("--hh", Math.max(460, innerHeight) + "px");
   setH(); addEventListener("resize", () => { if (innerWidth !== lw) { lw = innerWidth; setH(); } }); }
 
 /* if the CDN is unreachable, fall back to the files next to the page */
