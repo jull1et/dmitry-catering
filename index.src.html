@@ -63,10 +63,10 @@ section{padding:68px 0}
 .logo{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;font-size:15px;text-decoration:none;line-height:1.15}
 .logo small{display:block;font-family:"Onest",sans-serif;font-weight:500;font-size:13px;opacity:.85;letter-spacing:0;margin-top:3px}
 .wa-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:var(--r);border:1px solid rgba(255,255,255,.5);background:rgba(36,29,30,.3);backdrop-filter:blur(8px);color:#fff}
-.hero{background-size:cover;background-position:50% 50%;position:relative;min-height:var(--hh,100svh);display:flex;align-items:flex-end;padding:96px 0 44px;isolation:isolate;color:#fff}
+.hero{background-size:cover;background-position:55% 50%;position:relative;min-height:var(--hh,100svh);display:flex;align-items:flex-end;padding:96px 0 44px;isolation:isolate;color:#fff}
 .hero picture{position:absolute;inset:0;z-index:-2;overflow:hidden}
-.hero picture img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(36,20,18,.55) 0%,rgba(36,20,18,.05) 26%,rgba(36,20,18,.55) 58%,rgba(24,14,13,.92) 100%)}
+.hero picture img{width:100%;height:100%;object-fit:cover;object-position:55% 50%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(36,20,18,.5) 0%,rgba(36,20,18,0) 22%,rgba(36,20,18,.18) 42%,rgba(30,17,15,.66) 58%,rgba(24,14,13,.93) 100%)}
 .hero h1{font-size:clamp(30px,8.4vw,68px);max-width:15ch;line-height:1.06}
 .hero p{margin-top:18px;max-width:34ch;font-size:18px;color:rgba(255,255,255,.92)}
 .hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
@@ -218,7 +218,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
   section{padding:104px 0}
   body{padding-bottom:0}
   .hero{padding-bottom:80px}
-  .hero picture img{object-position:50% 50%}
+  .hero picture img{object-position:50% 75%}
   .incl-grid{grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
   .mb{aspect-ratio:16/6}
   .dishes{grid-template-columns:1fr 1fr}
@@ -249,7 +249,7 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     <a class="wa-ico" href="https://api.whatsapp.com/send?phone=__PHONE__" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg></a>
   </div>
 </header>
-  <picture><source media="(min-width:860px)" srcset="img/hero-wide-1280.webp 1280w, img/hero-wide-1920.webp 1920w" sizes="100vw"><img src="img/hero-750.webp" srcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1125.webp 1125w, img/hero-1500.webp 1500w" sizes="100vw" alt="Обжаренные креветки с укропом и лаймом от шеф-повара Дмитрия Димова" fetchpriority="high" decoding="async" width="1125" height="1500"></picture>
+  <picture><source media="(min-width:860px)" srcset="img/hero-wide-1280.webp 1280w, img/hero-wide-1920.webp 1920w" sizes="100vw"><img src="img/hero-750.webp" srcset="img/hero-480.webp 480w, img/hero-750.webp 750w, img/hero-1125.webp 1125w, img/hero-1500.webp 1500w" sizes="100vw" alt="Длинный банкетный стол на природе под гирляндой, накрытый шеф-поваром Дмитрием Димовым" fetchpriority="high" decoding="async" width="1125" height="1500"></picture>
   <div class="wrap">
     <h1>Банкет под ключ от <span style="white-space:nowrap">шеф-повара</span></h1>
     <p>Свои продукты, готовка на вашей площадке, доставка. От 15 гостей, Алматы и область.</p>
@@ -307,12 +307,12 @@ input:focus,textarea:focus{outline:3px solid rgba(214,58,37,.35);outline-offset:
     <h2 class="rv">Наши банкеты</h2>
     <p class="lead rv">Столы и блюда, которые повар готовил для гостей в Алматы и области: дома, в залах и на природе.</p>
     <div class="shots rv">
-      <figure <!--LQ:table-->><img src="img/table-960.webp" srcset="img/table-480.webp 480w, img/table-960.webp 960w" sizes="(min-width:860px) 560px, 100vw" alt="Длинный банкетный стол на природе под гирляндой, накрытый к приходу гостей" loading="lazy" decoding="async" width="960" height="600"></figure>
+      <figure <!--LQ:table-->><img src="img/table-960.webp" srcset="img/table-480.webp 480w, img/table-960.webp 960w" sizes="(min-width:860px) 560px, 100vw" alt="Банкетный стол в зале: салаты, закуски, рыбная нарезка" loading="lazy" decoding="async" width="960" height="600"></figure>
       <figure <!--LQ:g-long-->><img src="img/g-long-600.webp" srcset="img/g-long-360.webp 360w, img/g-long-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Банкетный стол на свежем воздухе: салаты, закуски, свечи и цветы" loading="lazy" decoding="async" width="600" height="600"></figure>
       <figure <!--LQ:g-skewers-->><img src="img/g-skewers-600.webp" srcset="img/g-skewers-360.webp 360w, img/g-skewers-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Мини-шашлычки из креветок с лимоном на тарелках" loading="lazy" decoding="async" width="600" height="600"></figure>
       <figure <!--LQ:g-top-->><img src="img/g-top-600.webp" srcset="img/g-top-360.webp 360w, img/g-top-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Накрытый стол сверху: перепёлки, салаты, капрезе и фрукты" loading="lazy" decoding="async" width="600" height="600"></figure>
       <figure <!--LQ:g-serve-->><img src="img/g-serve-600.webp" srcset="img/g-serve-360.webp 360w, img/g-serve-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Шеф-повар Дмитрий Димов раскладывает бешбармак на блюдо" loading="lazy" decoding="async" width="600" height="600"></figure>
-      <figure <!--LQ:g-hall-->><img src="img/g-hall-600.webp" srcset="img/g-hall-360.webp 360w, img/g-hall-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Банкетный стол в зале: салаты, закуски, рыбная нарезка" loading="lazy" decoding="async" width="600" height="600"></figure>
+      <figure <!--LQ:g-shrimp-->><img src="img/g-shrimp-600.webp" srcset="img/g-shrimp-360.webp 360w, img/g-shrimp-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Обжаренные креветки с укропом и лаймом" loading="lazy" decoding="async" width="600" height="600"></figure>
       <figure <!--LQ:g-roll-->><img src="img/g-roll-600.webp" srcset="img/g-roll-360.webp 360w, img/g-roll-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Мясной рулет с начинкой, нарезанный на доске" loading="lazy" decoding="async" width="600" height="600"></figure>
       <figure <!--LQ:g-canape-->><img src="img/g-canape-600.webp" srcset="img/g-canape-360.webp 360w, img/g-canape-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Канапе с лососем и творожным сыром на ржаном хлебе" loading="lazy" decoding="async" width="600" height="600"></figure>
       <figure <!--LQ:g-rolls-->><img src="img/g-rolls-600.webp" srcset="img/g-rolls-360.webp 360w, img/g-rolls-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="Рулетики из баклажанов с творожным сыром" loading="lazy" decoding="async" width="600" height="600"></figure>
