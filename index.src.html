@@ -538,9 +538,9 @@ function renderTabs() {
 }
 function counts() {
   MENU.forEach(c => {
-    const n = c.items.filter(i => picked.has(i[0])).length, t = (n ? n + " из " : "") + c.items.length;
+    const n = c.items.filter(i => picked.has(i[0])).length, t = n ? String(n) : "";
     const a = document.querySelector(`.tab[data-t="${c.id}"] small`), h = document.querySelector(`#m-${c.id} small`);
-    if (a) a.textContent = t; if (h) h.textContent = n ? "выбрано " + t : c.items.length + " блюд";
+    if (a) a.textContent = t; if (h) h.textContent = n ? "выбрано " + n : "";
   });
 }
 function renderDishes() {
