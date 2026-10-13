@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Clean-param: v&x
+
+Sitemap: https://cateringshef.kz/sitemap.xml

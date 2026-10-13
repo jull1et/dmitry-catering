@@ -38,6 +38,16 @@ if DEMO:
     out=re.sub(r'<a href="tel:\+7[0-9]+">(.*?)</a>',r'<span class="telx">\1</span>',out)
 else:
     out=out.replace('<!--ROBOTS-->','').replace('<!--DEMONOTE-->','')
+# разметка вопросов-ответов для поисковиков: собирается из блока #faq, чтобы текст совпадал со страницей
+faq=re.findall(r'<details[^>]*><summary>(.*?)<svg.*?</summary><p>(.*?)</p></details>',src,re.S)
+strip=lambda s:re.sub(r'<[^>]+>','',s).strip()
+faqld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":strip(q),"acceptedAnswer":{"@type":"Answer","text":strip(a)}} for q,a in faq]}
+out=out.replace('<!--FAQLD-->','<script type="application/ld+json">'+json.dumps(faqld,ensure_ascii=False,separators=(',',':'))+'</script>' if faq and not DEMO else '')
 open('index.html','w',encoding='utf-8').write(out)
+# карта сайта для поисковиков: дата последней правки исходника по git, иначе сегодняшняя
+import datetime
+mod=sh('git','log','-1','--format=%cs','--','index.src.html') if not sh('git','status','--porcelain','index.src.html') else ''
+mod=mod or datetime.date.today().isoformat()
+open('sitemap.xml','w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://cateringshef.kz/</loc><lastmod>'+mod+'</lastmod></url>\n</urlset>\n')
 bad=[c for c in ('\u2014','\u2013') if c in out]
 print('cdn',CDN or 'LOCAL','| mode','DEMO' if DEMO else 'LIVE','phone',phone,'icons',len(sym),'dashes',bad,'bytes',len(out),'owner-number-left',out.count(PHONE_OWNER) if DEMO else '-')
